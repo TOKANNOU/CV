@@ -1,0 +1,1673 @@
+/*===================== GOOGLE FONTS (bibliothèque de polices et d'icônes) ======================*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+/*======================== Déclaration des propriétés CSS personnalisées ========================*/
+/*======== La pseudo-classe :root sélectionne l'élément racine du document (donc <html>) ========*/
+:root {
+    /* Taille de l'entête de la page */
+    --header-height: 3rem;
+
+    /* Choix d'une couleur */
+    --hue-color: 250; /* Mauve 250 - Vert 142 - Bleu 230 - Rose 340 */
+
+    /* Mode des couleurs sous forme HSL (Hue ou degré - Saturation - Lightness) */
+    --first-color: hsl(var(--hue-color), 69%, 61%);
+    --first-color-second: hsl(var(--hue-color), 69%, 61%);
+    --first-color-alt: hsl(var(--hue-color), 57%, 53%);
+    --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
+    --title-color: hsl(var(--hue-color), 8%, 15%);
+    --text-color: hsl(var(--hue-color), 8%, 45%);
+    --text-color-light: hsl(var(--hue-color), 8%, 65%);
+    --input-color: hsl(var(--hue-color), 70%, 96%);
+    --body-first-color: hsla(0, 0%, 95%, 0.9);
+    --body-second-color: hsla(0, 0%, 95%, 0.9);
+    --body-swiper-color: #000;
+    --body-nav-color: hsl(0, 0%, 95%);
+    --container-color: #fff;
+    --border-box-color : hsla(0, 0%, 0%, 0.15);
+    --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
+    --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+    --background: url("../picture/ligth.png") no-repeat center;
+
+    /* Polices et typographies (0.5rem = 8px, 1rem = 16px, 1.5rem = 24px ...) */
+    --body-font: 'Poppins', sans-serif;
+    --big-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1.125rem;
+    --normal-font-size: 0.938rem;
+    --small-font-size: 0.813rem;
+    --smaller-font-size: 0.75rem;
+
+    /* Épaisseurs des polices (Font weight) */
+    --font-medium: 500;
+    --font-semi-bold: 600;
+
+    /* Marges basses appliquées aux éléments (0.25rem = 4px, 0.5rem = 8px, 0.75rem = 12px ..) */
+    --mb-0-25: 0.25rem;
+    --mb-0-5: 0.5rem;
+    --mb-0-75: 0.75rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+    --mb-3: 3rem;
+
+    /* Définition de l'ordre d'affichage des éléments selon l'axe z (z index) */
+    --z-tooltip: 10; /* info-bulle */
+    --z-fixed: 100;  /* position fixe */
+    --z-modal: 1000;  /* boîte de dialogue */
+}
+
+/* Taille de police pour les écrans larges (au-dessus de 1200px) */
+@media screen and (min-width: 1200px) {
+    :root {
+        --big-font-size: 2.5rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.5rem ;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: 0.875rem;
+        --smaller-font-size: 0.813rem;
+    }
+}
+
+
+
+/*============================ Variables en mode sombre ============================*/
+body.dark-theme {
+    /* Mode des couleurs sous forme HSL (Hue ou degré - Saturation - Lightness) */
+    --first-color-second: hsl(var(--hue-color), 30%, 8%);
+    --title-color: hsl(var(--hue-color), 8%, 95%);
+    --text-color: hsl(var(--hue-color), 8%, 75%);
+    --input-color: hsl(var(--hue-color), 29%, 16%);
+    --body-color: hsl(var(--hue-color), 28%, 12%);
+    --body-first-color: #262628;
+    --body-second-color: hsla(0, 0%, 0%, 0.9);
+    --body-swiper-color: #fff;
+    --body-nav-color: hsl(var(--hue-color), 30%, 8%);
+    --container-color: hsl(var(--hue-color), 29%, 16%);
+    --border-box-color : hsla(0, 0%, 100%, 0.15);
+    --scroll-bar-color: hsl(var(--hue-color), 12%, 48%);
+    --scroll-thumb-color: hsl(var(--hue-color), 12%, 36%);
+    --background: url("../picture/dark-theme.jpg") no-repeat center;
+}
+
+
+
+/*========== Bouton de changement de la page en modes clair/sombre ==========*/
+.nav__btns {
+    display: flex;
+    align-items: center;
+}
+
+.change-theme {
+    font-size: 1.25rem;
+    color: var(--title-color);
+    margin-right: var(--mb-1);
+    cursor: pointer;
+}
+
+.change-theme:hover {
+    color: var(--first-color);
+}
+
+
+
+/*============================================ Configuration de la page ============================================*/
+* {
+    box-sizing: border-box; /* inclusion des marges internes et bordures pour calculer la taille des éléments */
+    padding: 0;
+    margin: 0;
+}
+
+/* Contrôle de la barre de défilement */
+html {
+    scroll-behavior: smooth; /* adoucissement du mouvement de la barre lors du défilement */
+}
+
+/* Corps du document (la fonction var() est utilisée pour insérer la valeur d'une variable CSS) */
+body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-first-color);
+    color: var(--text-color);
+    /* position: relative; */
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    background: var(--background);
+    background-size: cover;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    z-index: -1;
+}
+
+/* Configuration des titres */
+h1, h2, h3, h4 {
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+} 
+
+/* Retrait des puces (ou marqueurs) des éléments d'une liste */
+ul {
+    list-style: none;
+}
+
+/* Retrait des décorations des liens */
+a {
+    text-decoration: none;
+}
+
+/* Configuration de la taille des images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+/*=========================== Classes CSS réutilisables ===========================*/
+section {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    top: 140px;
+    bottom: 100%;
+    opacity: 0;
+    z-index: 2;
+    transition: ease-in-out 0.9s;
+}
+  
+section.section-show {
+    top: 92px;
+    bottom: auto;
+    opacity: 1;
+    padding-bottom: 90px;
+}
+
+section .container {
+    background: var(--body-second-color);
+    padding: 20px;
+    box-sizing: border-box;
+    border: solid var(--border-box-color) 1px;
+    border-radius: 1.5rem;
+}
+
+footer {
+    overflow: hidden;
+    position: absolute;
+    bottom: 100%;
+    opacity: 0;
+    z-index: 2;
+}
+
+footer.footer-show {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 999999;
+    opacity: 1;
+}
+
+/* Titre des sections */
+.section__title {
+    font-size: var(--h1-font-size);
+    margin-bottom: var(--mb-1-5);
+}
+
+/* Alignement au centre des titres et sous-titres */
+.section__title {
+    text-align: center;
+}
+
+
+
+/*==================== Mise en page du document ====================*/
+/* Conteneur */
+.container {
+    max-width: 1200px;
+    margin-left: var(--mb-2);
+    margin-right: var(--mb-2);
+}
+
+/* Disposition en grille */
+.grid {
+    display: grid;
+    gap: 3.5rem;
+}
+
+/* Affichage de la barre de navigation et de la page d'accueil (gestion en JS)*/
+#header {
+    transition: ease-in-out 0.3s;
+    position: relative;
+    height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    z-index: 997;
+    overflow-y: auto;
+    background-color: transparent;
+}
+
+/* Adaptation des éléments suivants de la page d'accueil */
+#header a.nav__logo {
+    visibility: hidden;
+    width: 3.25rem;
+}
+
+#header div.nav__btns {
+    visibility: hidden;
+}
+
+#header div.nav__menu {
+    margin-left: 0;
+}
+
+/* Affichage de la barre de navigation sans la page d'accueil (en JS) */
+#header.header-top {
+    height: calc(var(--header-height) + 1.5rem);
+    padding-top: unset;
+    padding-bottom: unset;
+    position: fixed;
+    left: 0;    
+    top: 0;
+    right: 0;
+    background-color: var(--body-nav-color);
+    box-shadow: 0 4px 4px var(--border-box-color);
+}
+
+/* Annulation des styles suivants sur les sections */
+#header.header-top .home__container {
+    display: none;
+}
+
+#header.header-top a.nav__logo {
+    visibility: visible;
+    width: 8.5rem;
+}
+
+#header.header-top div.nav__btns {
+    visibility: visible;
+}
+
+/* mise en page de l'accueil */
+.home__container {
+    margin-top: 4rem;
+}
+
+
+
+/*==================== Configuration de la barre de navigation ====================*/
+/* Barre de navigation */
+.nav {
+    max-width: 1200px;
+    display: flex;
+    height: calc(var(--header-height) + 1.5rem);
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo et bouton à bascule */
+.nav__logo {
+    width: 8.5rem;
+}
+
+.nav__toggle {
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+}
+
+.nav__toggle {
+    font-size: 1.1rem;
+    cursor: pointer
+}
+
+/* Changement de couleur du bouton à bascule au survol de la souris */
+.nav__toggle:hover {
+    color: var(--first-color);
+}
+
+/* Configuration de l'affichage du menu pour les écrans en dessous de 989px */
+@media screen and (max-width: 989px) {
+    .nav__menu {
+        position: fixed;
+        top: -100%; /* Masquage du contenu du menu */
+        left: 0;
+        width: 100%;
+        background-color: var(--body-nav-color);
+        padding: 2rem 1.5rem 4rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        border-radius: 0 0 1.5rem 1.5rem;
+        transition: 0.3s;
+    }
+
+    #header div.nav__btns {
+        visibility: visible;
+    }
+
+    #header {
+        padding-top: unset;
+    }
+}
+
+/* Disposition du menu selon la grille suivante */
+.nav__list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* Disposition du menu de navigation */
+.nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: var(--small-font-size);
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+}
+
+/* Changement de couleur de la liste du menu au survol de la souris */
+.nav__link:hover {
+    color: var(--first-color);
+}
+
+/* Taille des icônes de la liste du menu */
+.nav__icon {
+    font-size: 1.2rem;
+}
+
+/* Configuration du bouton de fermeture de la liste du menu */
+.nav__close {
+    position: absolute;
+    right: 1.3rem;
+    top: 11rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--first-color);
+}
+
+/* Changement de couleur du bouton de fermeture au survol de la souris */
+.nav__close:hover {
+    color: var(--first-color-alt);
+}
+
+/* show menu */
+.show-menu {
+    top: 0;
+}
+
+/* Activation des liens de navigation */
+.active-link > a {
+    color: var(--first-color);
+}
+
+
+
+/*==================== Configuration de la page d'accueil ====================*/
+.home__content {
+    text-align: center;
+    margin-left: var(--mb-2-5);
+    margin-right: var(--mb-2-5);
+}
+
+.about__blob {
+    width: 200px;
+    fill: var(--first-color);
+}
+
+/* Configuration de la propriété mask de l'élément SVG */
+mask {
+    mask-type: alpha;
+}
+
+.about__blob:hover {
+    fill: var(--scroll-thumb-color);
+}
+
+.about__blob-img {
+    width: 170px;
+}
+
+.home__title {
+    font-size: var(--h3-font-size);
+}
+
+.home__subtitle {
+    font-size: var(--big-font-size);
+    color: var(--first-color);
+    font-weight: var(--font-medium);
+    margin-bottom: var(--mb-2);
+}
+
+.home__description {
+    font-size: var(--h2-font-size);
+    color: var(--title-color);
+    margin-bottom: var(--mb-2);
+}
+
+.home__skills {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.skill__icon {
+    font-size: 2rem;
+    color: var(--first-color);
+}
+
+.skill__icon:hover {
+    color: var(--first-color-alt);
+}
+
+
+
+/*==================== Configuration des boutons ====================*/
+.button {
+    display: inline-block;
+    background-color: var(--first-color);
+    color: #ffffff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-weight: var(--font-medium);
+}
+
+.button:hover {
+    background-color: var(--first-color-alt);
+}
+
+.button__icon {
+    font-size: 1.5rem;
+    margin-left: 0.35rem;
+    transition: 0.3s;
+}
+
+.button--flex {
+    display: inline-flex;
+    align-items: center;
+}
+
+
+
+/*==================== Configuration de la page "A propos" ====================*/
+.about__container {
+    grid-template-columns: 0.4fr 1fr;
+}
+
+.about__description {
+    font-size: 1rem;
+    color: var(--title-color);
+    text-align: justify;
+    margin-bottom: var(--mb-2-5);
+}
+
+.about__description p {
+    margin-bottom: var(--mb-1-5);
+}
+
+.about__buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.button--small {
+    padding: 0.75rem 1rem;
+}
+
+.button--link {
+    padding: 0;
+    background-color: transparent;
+    color: var(--first-color);
+}
+
+.button--link:hover {
+    background-color: transparent;
+    color: var(--first-color-alt);
+}
+
+
+
+/*==================== Page des compétences ====================*/
+/* suppression des espaces entre les lignes du conteneur */
+.skills__container {
+    row-gap: 0;
+}
+
+.skills__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--mb-2-5);
+    cursor: pointer;
+}
+
+.skills__icon, .skills__arrow {
+    font-size: 2.5rem;
+    color: var(--first-color);
+}
+
+.skills__icon:hover, .skills__arrow:hover {
+    color: var(--first-color-alt);
+}
+
+.skills__icon {
+    margin-right: var(--mb-0-75);
+}
+
+.workflow-icon {
+    font-size: 1.5rem;
+    color: var(--title-color);
+}
+
+.workflow-icon:hover {
+    color: var(--first-color-lighter);
+}
+
+.skills__workflow {
+    display: flex;
+}
+
+.skills__list .skills__workflow {
+    align-items: center;
+}
+
+.skills__workflow h4 span {
+    font-size: var(--normal-font-size);
+    color: var(--text-color-light);
+}
+
+.skills__workflow h4 {
+    margin: 0 0.5rem;
+}
+
+.skills__title {
+    font-size: var(--h3-font-size);
+}
+
+.skills__subtitle {
+    font-size: var(--small-font-size);
+    color: var(--text-color-light);
+}
+
+.skills__arrow {
+    margin-left: auto;
+    transition: 0.4s;
+}
+
+.skills__list {
+    row-gap: 1.5rem;
+    padding-left: 2.7rem;
+}
+
+/* Mise en ligne des éléments de la div*/
+.skills__titles {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--mb-0-5);
+}
+
+.skills__name {
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+}
+
+.skills__bar, .skills__percentage {
+    height: 5px;
+    border-radius: 0.25rem;
+}
+
+/* barre de pourcentage initiale (à 0%) */
+.skills__bar {
+    background-color: var(--first-color-lighter);
+}
+
+/* barre de pourcentage pleine (à 100%) */
+.skills__percentage {
+    display: block;
+    background-color: var(--first-color);
+}
+
+/* fixation des pourcentages en fonction des niveaux de compétences */
+/* Front-end */
+.skills__html {
+    width: 60%;
+}
+
+.skills__css {
+    width: 50%;
+}
+
+.skills__bootstrap {
+    width: 50%;
+}
+
+.skills__js {
+    width: 40%;
+}
+
+.skills__ajax {
+    width: 30%;
+}
+
+.skills__jquery {
+    width: 30%;
+}
+
+.skills__vuejs {
+    width: 30%;
+}
+
+.skills__json {
+    width: 30%;
+}
+
+/* Back-end */
+.skills__mysql {
+    width: 50%;
+}
+
+.skills__php {
+    width: 50%;
+}
+
+.skills__symfony {
+    width: 50%;
+}
+
+/* Mobile */
+.skills__javafx {
+    width: 40%;
+}
+
+.skills__jdbc {
+    width: 35%;
+}
+
+.skills__android {
+    width: 10%;
+}
+
+/* Calibration et diagnosctic moteur */
+.skills__creta {
+    width: 85%;
+}
+
+.skills__inca {
+    width: 75%;
+}
+
+.skills__can {
+    width: 80%;
+}
+
+/* Gestion de projet */
+.skills__uml {
+    width: 60%;
+}
+
+.skills__maquettage {
+    width: 45%;
+}
+
+.skills__cdc {
+    width: 70%;
+}
+
+.skills__pilotage {
+    width: 60%;
+}
+
+
+/* liste des compétences fermée */
+.skills__close .skills__list {
+    height: 0;
+    overflow: hidden;
+}
+
+/* liste des compétences ouvertes */
+.skills__open .skills__list {
+    height: max-content;
+    margin-bottom: var(--mb-2-5);
+}
+
+/* direction de la fêche en haut lorsque la liste est ouverture */
+.skills__open .skills__arrow {
+    transform: rotate(-90deg);
+}
+
+
+
+/*==================== Parcours universitaire et professionel ====================*/
+.qualification__tabs {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: var(--mb-2);
+}
+
+.qualification__button {
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-medium);
+    cursor: pointer;
+}
+
+.qualification__button:hover {
+    color: var(--first-color);
+}
+
+.qualification__icon {
+    font-size: 1.8rem;
+    margin-right: var(--mb-0-25);
+}
+
+.qualification__data {
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    column-gap: 1.5rem;
+}
+
+.qualification__title {
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+}
+
+.qualification__subtitle {
+    display: inline-block;
+    font-size: var(--small-font-size);
+    margin-bottom: var(--mb-1);
+}
+
+.qualification__calendar {
+    font-size: var(--smaller-font-size);
+    color: var(--text-color-light);
+}
+
+.calendar-icon {
+    font-size: 1rem;
+}
+
+.qualification__afpa {
+    font-size: var(--small-font-size);
+    color: var(--first-color);
+}
+
+.qualification__rounder {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    background-color: var(--first-color);
+    border-radius: 50%;
+}
+
+.qualification__line {
+    display: block;
+    width: 1px;
+    height: 100%;
+    background-color: var(--first-color);
+    transform: translate(6px, -7px);
+}
+
+.qualification [data-content] {
+    display: none;
+}
+
+.qualification__active[data-content] {
+    display: block;
+}
+
+.qualification__button.qualification__active{
+    color: var(--first-color);
+}
+
+
+
+/*==================== Gestion des boîtes modales des expériences professionnelles ====================*/
+/* mise en forme des boîtes modales */
+.services__button {
+    cursor: pointer;
+    font-size: var(--small-font-size);
+}
+
+.services__button:hover .button__icon {
+    transform: translateX(0.25rem);
+}
+
+.services__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-modal);
+    opacity: 0;   
+    visibility: hidden; /* cache le modal */
+    transition: 0.3s;
+}
+
+.services__modal-content {
+    position: relative;
+    background-color: var(--container-color);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: justify;
+}
+
+.services__modal-services {
+    row-gap: 1rem;
+}
+
+.services__modal-service {
+    display: flex;
+}
+
+.services__modal-title {
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+    margin-bottom: var(--mb-1-5);
+}
+
+.services__modal-service p {
+    font-size: var(--normal-font-size);
+}
+
+.services__modal-content span {
+    font-size: var(--normal-font-size);
+    color: var(--first-color-alt);
+}
+
+.services__modal-alternance ul {
+    margin-top: var(--mb-1);
+}
+
+.services__modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: var(--first-color);
+    cursor: pointer;
+}
+
+.services__modal-icon {
+    color: var(--first-color);
+    margin-right: var(--mb-0-5);
+}
+
+/* activation du modal */
+.active-modal {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* retrait de l'arrière plan du modal du carousel d'images */
+.swiper-slide div.services__modal {
+    background-color: unset;
+}
+
+
+
+/*==================== Page des projets réalisés (gestion du carousel d'images) ====================*/
+/* Utilisation des SWIPER pour Configurer le carousel */
+.swiper-container {
+    width: 100%;
+    padding-top: 1rem;
+}
+
+.swiper-slide {
+    width: 55%;
+    height: 55%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 0.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.swiper-slide:hover { 
+    background: var(--body-swiper-color);
+}
+
+.portfolio__data {
+    padding: 0 1rem;
+}
+
+.portfolio__title {
+    font-size: var(--h3-font-size);
+    color: var(--body-second-color);
+    font-weight: var(--font-semi-bold);
+    margin-bottom: var(--mb-0-5);
+}
+
+.portfolio__description {
+    font-size: var(--normal-font-size);
+    color: var(--body-second-color);
+}
+
+
+/* Affichage d'une loupe sur les images et "hover" après passage de la souris */
+.portfolio__hovered {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    height: 100%; width: 100%;
+    opacity: 0; transition: all .3s;
+    background-color: #3f3f44;
+}
+
+.portfolio__hover:hover .portfolio__hovered {
+    opacity: 0.5;
+}
+
+.portfolio__hovered span {
+    color: #FFFFFF;
+    font-size: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.glass-button {
+    font-size: 7rem;
+}
+
+
+/*==================== Page de contact ====================*/
+.contact__icon {
+    font-size: 2rem;
+    color: var(--first-color);
+}
+
+.contact__title {
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-medium);
+}
+
+.contact__subtitle {
+    font-size: var(--normal-font-size);
+    color: var(--text-color-light);
+}
+
+.contact__information {
+    text-align: center;
+    margin-bottom: var(--mb-2);
+ }
+
+
+
+/*==================== Pied de page ====================*/
+.footer__container {
+    display: grid;
+    gap: 1rem;
+}
+
+.footer__bg {
+    background-color: var(--first-color-second);
+    padding: 1rem 0 1rem;
+}
+
+.footer__social {
+    font-size: 1.25rem;
+    color: #fff;
+    padding-left: 1rem;
+}
+
+.footer__socials {
+    justify-self: flex-end;
+    align-self: center;
+}
+
+.footer__copy {
+    font-size: var(--smaller-font-size);
+    align-self: center;
+    color: #fff;
+}
+
+.footer__social:hover, .footer__copy:hover {
+    color: var(--first-color-lighter);
+}
+
+
+
+/*========== Bouton de retour en haut de page ==========*/
+.scrollup {
+    position: fixed;
+    right: 1rem;
+    bottom: -20%;  
+    background-color: var(--first-color-second);
+    opacity: 0.8;
+    padding: 0 0.3rem;
+    border-radius: 0.4rem;
+    z-index: var(--z-tooltip);
+    transition: 0.4s;
+}
+
+.scrollup:hover {
+    background-color: var(--first-color-alt);
+}
+
+.scrollup__icon {
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+/* Apparition du bouton retour haut page */
+.show-scroll {
+    bottom: 7.5rem;
+}
+
+
+
+/*========== Mise en page de la barre de défilement (bibliothèque webkit) ==========*/
+/* zone de contenance de la barre de défilement*/
+::-webkit-scrollbar {
+    width: 0.6rem;
+    background-color: var(--scroll-bar-color);
+    border-radius: 0.5rem;
+}
+
+/* barre de défilement */
+::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb-color);
+    border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-color-light);
+}
+
+
+
+/*==================== Gestion de l'affichage en fonction des écrans ci-dessous ====================*/
+/* Pour les petits écrans en dessous de 350 pixels */
+@media screen and (max-width: 350px) {
+    section.section-show {
+        padding-bottom: 134px;
+    }
+
+    .nav__logo, #header.header-top a.nav__logo  {
+        visibility: hidden;
+    }
+
+    .home__container {
+        margin-top: 2rem;
+    }
+
+    .home__content {
+        margin: unset;
+    }
+
+    .home__title {
+        font-size: unset;
+    }
+
+    .about__container {
+        display: unset;
+    }
+
+    .about__img {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .about__blob {
+        width: 160px;
+    }
+
+    :root {
+        --big-font-size: 1.25rem;
+        --h2-font-size: 1rem ;
+    }
+
+    .nav__logo {
+        width: 6.5rem;
+    }
+
+    .nav__menu {
+        padding: 2rem 0.25rem 4rem;
+    }
+
+    .nav__list {
+        column-gap: 0;
+    }
+
+    .home__subtitle, .home__description {
+        margin-bottom: var(--mb-1);
+    }
+
+    .home__skills {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 0.75rem;
+    }
+
+    .skill__icon {
+        font-size: 1.75rem;
+    }
+
+    .about__buttons {
+        font-size: var(--normal-font-size);
+    }
+
+    .button {
+        padding: 0.8rem;
+    }
+
+    .skill__title {
+        font-size: var(--smaller-font-size);
+    }
+
+    .skills__container {
+        display: unset;
+    }
+
+    .skills__title {
+        font-size: var(--normal-font-size);
+    }
+
+    .skills__icon, .skills__arrow {
+        font-size: 1.5rem;
+    }
+
+    .qualification .container {
+        padding-right: 0.35rem;
+        padding-left: 0.35rem;
+    }
+
+    .qualification__title {
+        font-size: 0.7rem;
+    }
+
+    .qualification__subtitle {
+        font-size: 0.8rem;
+    }
+
+    .qualification__data {
+        column-gap: 0.15rem;
+    }
+
+    .qualification__icon {
+        font-size: 1.25rem;
+    }
+
+    .qualification__button {
+        font-size: var(--normal-font-size);
+        margin: 0 var(--mb-0-5);
+    }
+
+    .qualification__icon {
+        margin-right: 0.05rem;
+    }
+
+    .qualification__calendar {
+        font-size: 0.8rem;
+    }
+
+    .services__button {
+        font-size: 0.8rem;
+    }
+
+    .button__icon {
+        font-size: 1.25rem;
+        margin-left: 0.2rem;
+    }
+
+    .services__modal {
+        position: absolute;
+        padding: 0 0.5rem;
+    }
+
+    .services__modal-content {
+        padding-left: 1rem;
+        text-align: unset;
+    }
+
+    .services__modal-title {
+        display: grid;
+        grid-template-columns: 0.85fr;
+    }
+
+    .services__modal-service p {
+        font-size: var(--small-font-size);
+    }
+
+    .swiper-slide {
+        width: 100%;
+        height: 100%;
+        padding-bottom: 0.5rem;
+    }
+
+    .portfolio__data {
+        padding: 0 0.5rem;
+    }
+    
+    .portfolio__title {
+        font-size: var(--normal-font-size);
+    }
+    
+    .portfolio__description {
+        font-size: var(--small-font-size);
+    }
+
+    .glass-button {
+        font-size: 3rem;
+    }
+
+    .contact__title {
+        font-size: var(--normal-font-size);
+    }
+    
+    .contact__subtitle {
+        font-size: var(--small-font-size);
+    }
+
+    .footer__socials {
+        justify-self: unset;
+    }
+
+    .footer__bg {
+        text-align: center;
+    }
+}
+
+
+/* Pour les écrans au-delà de 351 pixels */
+@media screen and (min-width: 351px) {
+    section.section-show {
+        padding-bottom: 134px;
+    }
+
+    :root {
+        --big-font-size: 1.25rem;
+        --h2-font-size: 1rem ;
+    }
+
+    .home__container {
+        margin-top: 2rem;
+    }
+
+    .home__content {
+        margin: unset;
+    }
+
+    .home__title {
+        font-size: unset;
+    }
+    
+    .home__subtitle, .home__description {
+        margin-bottom: var(--mb-1);
+    }
+
+    .home__skills {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 1rem;
+    }
+
+    .about__container {
+        display: unset;
+    }
+
+    .about__img {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .skill__title {
+        font-size: var(--normal-font-size);
+    }
+
+    .button {
+        padding: 0.8rem;
+    }
+
+    .qualification .container {
+        padding-right: 0.45rem;
+        padding-left: 0.45rem;
+    }
+
+    .qualification__subtitle {
+        font-size: var(--normal-font-size);
+    }
+
+    .qualification__data {
+        column-gap: 0.15rem;
+    }
+
+    .qualification__afpa {
+        font-size: var(--normal-font-size);
+    }
+
+    .qualification__button {
+        margin: 0 var(--mb-0-75);
+    }
+
+    .services__button {
+        font-size: var(--normal-font-size);
+    }
+
+    .qualification__calendar {
+        font-size: var(--normal-font-size);
+    }
+
+    .services__modal {
+        position: absolute;
+        padding: 0 0.5rem;
+    }
+
+    .services__modal-content {
+        text-align: unset;
+    }
+
+    .services__modal-title {
+        display: grid;
+        grid-template-columns: 0.9fr;
+    }
+
+    .swiper-slide {
+        width: 100%;
+        height: 100%;
+        padding-bottom: 0.5rem;
+    }
+
+    .portfolio__data {
+        padding: 0 0.5rem;
+    }
+    
+    .portfolio__title {
+        font-size: var(--normal-font-size);
+    }
+    
+    .portfolio__description {
+        font-size: var(--small-font-size);
+    }
+
+    .glass-button {
+        font-size: 3rem;
+    }
+
+    .footer__socials {
+        justify-self: unset;
+    }
+
+    .footer__bg {
+        text-align: center;
+    }
+}
+
+
+/* Pour les écrans au-delà de 568 pixels */
+@media screen and (min-width: 568px) {
+    section.section-show {
+        padding-bottom: 90px;
+    }
+
+    :root {
+        --big-font-size: 2rem;
+        --h2-font-size: 1.25rem ;
+    }
+
+    .home__container {
+        margin-top: 4rem;
+    }
+
+    .home__title {
+        font-size: 1.25rem;
+    }
+
+    .home__skills {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 1.5rem;
+    }
+
+    .skill__title {
+        font-size: var(--h3-font-size);
+    }
+
+    .skill__icon {
+        font-size: 2.5rem;
+    }
+
+    .home__data {
+        grid-column: initial;
+    }
+
+    .button {
+        padding: 1rem;
+    }
+
+    .home__subtitle, .home__description {
+        margin-bottom: var(--mb-2);
+    }
+
+    .about__blob {
+        width: 230px;
+    }
+
+    .skills__container,
+    .footer__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .qualification__data {
+        column-gap: 0.5rem;
+    }
+
+    .qualification__sections {
+        display: grid;
+        grid-template-columns: 0.6fr;
+        justify-content: center;
+    }
+
+    .services__modal {
+        position: fixed;
+    }
+
+    .services__modal-content {
+        text-align: justify;
+    }
+    
+    .contact__layer {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .portfolio__title {
+        font-size: var(--h3-font-size);
+    }
+    
+    .portfolio__description {
+        font-size: var(--normal-font-size);
+    }
+
+    .glass-button {
+        font-size: 7rem;
+    }
+
+    .footer__socials {
+        justify-self: flex-end;
+    }
+
+    .footer__bg {
+        text-align: unset;
+    }
+}
+
+
+/* Pour les écrans au-delà de 768 pixels */
+@media screen and (min-width: 768px) {
+    .home__content {
+        margin: 0 3.5rem;
+    }
+
+    .home__subtitle, .home__description {
+        margin-bottom: var(--mb-2-5);
+    }
+
+    .home__skills {
+        display: flex;
+        gap: 2.5rem;
+    }
+
+    .skill__icon {
+        font-size: 3rem;
+    }
+
+    .button {
+        padding: 1.25rem;
+    }
+}
+
+
+/* Pour les écrans au-delà de 990 pixels */
+@media screen and (min-width: 990px) {
+    .nav__toggle {
+        display: none;
+    }
+
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section, .header {
+        padding: 0 var(--mb-2);
+    }
+
+    .section__title {
+        margin-bottom: 2.5rem;
+    }
+
+    /* repositionnement de la navbar */
+    .nav {
+        height: calc(var(--header-height) + 1.5rem);
+    }
+
+    .nav__icon, .nav__close, .nav__toggle {
+        display: none;
+    }
+
+    .nav__list {
+        display: flex;
+    }
+
+    .nav__menu {
+        margin-left: auto;
+    }
+
+    .change-theme {
+        margin-left: 2rem;
+        margin-right: 0;
+    }
+
+    .home__content {
+        margin: 0 10rem;
+    }
+
+    .home__title {
+        font-size: 1.45rem;
+    }
+
+    .home__skills {
+        gap: 4rem;
+    }
+
+    .skill__icon {
+        font-size: 4rem;
+    }
+
+    .about__blob {
+        width: 270px;
+    }
+
+    .about__container {
+        display: grid;
+    }
+
+    .qualification__tabs {
+        justify-content: center;
+    }
+
+    .qualification__data {
+        column-gap: 1.5rem;
+    }
+
+    .qualification__button {
+        margin: 0 var(--mb-2);
+    }
+
+    /* repositionnement de la liste des compétences */
+    .services__modal-content {
+        width: 800px;
+    }
+
+    .swiper-slide {
+        width: 55%;
+        height: 55%;
+        padding-bottom: 1.5rem;
+    }
+    
+    .portfolio__title {
+        font-size: var(--h3-font-size);
+    }
+
+    .portfolio__data {
+        padding: 0 1rem;
+    }
+    
+    .portfolio__description {
+        font-size: var(--normal-font-size);
+    }
+
+    .contact__layer {
+        gap: 4rem;
+    }
+
+    .contact_infos {
+        display: flex;
+        gap : 4rem;
+    }
+    
+    .contact__container {
+        justify-content: center;
+    }
+
+    .footer__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer__bg {
+        padding: 1rem 2rem 1rem;
+    }
+}
+
+
+/* Pour les grands écrans au-delà de 1024 pixels */
+@media screen and (min-width: 1024px) {
+    .home__content {
+        margin: 0 12rem;
+    }
+
+    .home__skills {
+        gap: 3rem;
+    }
+
+    .skill__icon {
+        font-size: 4.5rem;
+    }
+
+    .about__blob {
+        width: 320px;
+    }
+}
