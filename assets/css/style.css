@@ -436,6 +436,7 @@ mask {
 
 .home__title {
     font-size: var(--h3-font-size);
+    margin-bottom: var(--mb-2);
 }
 
 .home__subtitle {
@@ -1109,6 +1110,7 @@ mask {
 
     .home__title {
         font-size: unset;
+        margin-bottom: var(--mb-1);
     }
 
     .about__container {
@@ -1302,6 +1304,7 @@ mask {
 
     .home__title {
         font-size: unset;
+        margin-bottom: var(--mb-1);
     }
     
     .home__subtitle, .home__description {
@@ -1423,6 +1426,7 @@ mask {
 
     .home__title {
         font-size: 1.25rem;
+        margin-bottom: var(--mb-2);
     }
 
     .home__skills {
@@ -1511,7 +1515,7 @@ mask {
         margin: 0 3.5rem;
     }
 
-    .home__subtitle, .home__description {
+    .home__title, .home__subtitle, .home__description {
         margin-bottom: var(--mb-2-5);
     }
 
