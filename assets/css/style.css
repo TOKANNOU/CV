@@ -437,6 +437,7 @@ mask {
 .home__title {
     font-size: var(--h3-font-size);
     margin-bottom: var(--mb-2);
+    letter-spacing: 1px;
 }
 
 .home__subtitle {
@@ -450,6 +451,7 @@ mask {
     font-size: var(--h2-font-size);
     color: var(--title-color);
     margin-bottom: var(--mb-2);
+    letter-spacing: 1px;
 }
 
 .home__skills {
