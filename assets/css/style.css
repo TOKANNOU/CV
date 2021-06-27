@@ -9,11 +9,11 @@
     --header-height: 3rem;
 
     /* Choix d'une couleur */
-    --hue-color: 250; /* Mauve 250 - Vert 142 - Bleu 230 - Rose 340 */
+    --hue-color: 173; /* Mauve 250 - Vert 142 - Bleu 230 - Rose 340 */
 
     /* Mode des couleurs sous forme HSL (Hue ou degré - Saturation - Lightness) */
-    --first-color: hsl(var(--hue-color), 69%, 61%);
-    --first-color-second: hsl(var(--hue-color), 69%, 61%);
+    --first-color: hsl(var(--hue-color), 49%, 42%);
+    --first-color-second: hsl(var(--hue-color), 49%, 42%);
     --first-color-alt: hsl(var(--hue-color), 57%, 53%);
     --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
     --title-color: hsl(var(--hue-color), 8%, 15%);
