@@ -28,7 +28,8 @@
     --border-box-color : hsla(0, 0%, 0%, 0.15);
     --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
     --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
-    --background: url("../picture/ligth.png") no-repeat center;
+    --background-laptop: url("../picture/laptop-light-theme.png") no-repeat center;
+    --background-mobile: url("../picture/mobile-light-theme.png") no-repeat center;
 
     /* Polices et typographies (0.5rem = 8px, 1rem = 16px, 1.5rem = 24px ...) */
     --body-font: 'Poppins', sans-serif;
@@ -91,7 +92,8 @@ body.dark-theme {
     --border-box-color : hsla(0, 0%, 100%, 0.15);
     --scroll-bar-color: hsl(var(--hue-color), 12%, 48%);
     --scroll-thumb-color: hsl(var(--hue-color), 12%, 36%);
-    --background: url("../picture/dark-theme.jpg") no-repeat center;
+    --background-laptop: url("../picture/laptop-dark-theme.jpg") no-repeat center;
+    --background-mobile: url("../picture/mobile-dark-theme.png") no-repeat center;
 }
 
 
@@ -133,13 +135,12 @@ body {
     font-size: var(--normal-font-size);
     background-color: var(--body-first-color);
     color: var(--text-color);
-    /* position: relative; */
 }
 
 body::before {
     content: "";
     position: fixed;
-    background: var(--background);
+    background: var(--background-laptop);
     background-size: cover;
     left: 0;
     right: 0;
@@ -335,6 +336,11 @@ footer.footer-show {
 
 /* Configuration de l'affichage du menu pour les écrans en dessous de 989px */
 @media screen and (max-width: 989px) {
+    body::before {
+        background: var(--background-mobile);
+        opacity: 0.3;
+    }
+
     .nav__menu {
         position: fixed;
         top: -100%; /* Masquage du contenu du menu */
@@ -353,6 +359,10 @@ footer.footer-show {
 
     #header {
         padding-top: unset;
+    }
+
+    .home__description {
+        font-weight: var(--font-medium);
     }
 }
 
