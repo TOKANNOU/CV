@@ -648,61 +648,82 @@ mask {
 /* fixation des pourcentages en fonction des niveaux de compétences */
 /* Front-end */
 .skills__html {
-    width: 60%;
+    width: 85%;
 }
 
 .skills__css {
-    width: 50%;
+    width: 70%;
 }
 
 .skills__bootstrap {
-    width: 50%;
+    width: 80%;
+}
+
+.skills__axentis {
+    width: 85%;
 }
 
 .skills__js {
-    width: 40%;
+    width: 60%;
 }
 
 .skills__ajax {
-    width: 30%;
+    width: 40%;
 }
 
 .skills__jquery {
-    width: 30%;
+    width: 40%;
 }
 
 .skills__vuejs {
-    width: 30%;
+    width: 45%;
 }
 
 .skills__json {
-    width: 30%;
+    width: 40%;
 }
 
 /* Back-end */
 .skills__mysql {
-    width: 50%;
+    width: 70%;
 }
 
 .skills__php {
-    width: 50%;
+    width: 75%;
 }
 
 .skills__symfony {
-    width: 50%;
+    width: 70%;
 }
 
 /* Mobile */
 .skills__javafx {
-    width: 40%;
+    width: 50%;
 }
 
 .skills__jdbc {
-    width: 35%;
+    width: 55%;
 }
 
 .skills__android {
-    width: 10%;
+    width: 40%;
+}
+
+/* Gestion de projet */
+.skills__uml {
+    width: 75%;
+}
+
+.skills__maquettage {
+    width: 80%;
+}
+
+.skills__cdc {
+    width: 90%;
+}
+
+.skills__pilotage {
+    width: 75%;
 }
 
 /* Calibration et diagnosctic moteur */
@@ -716,23 +737,6 @@ mask {
 
 .skills__can {
     width: 80%;
-}
-
-/* Gestion de projet */
-.skills__uml {
-    width: 60%;
-}
-
-.skills__maquettage {
-    width: 45%;
-}
-
-.skills__cdc {
-    width: 70%;
-}
-
-.skills__pilotage {
-    width: 60%;
 }
 
 
@@ -801,11 +805,6 @@ mask {
 
 .calendar-icon {
     font-size: 1rem;
-}
-
-.qualification__afpa {
-    font-size: var(--small-font-size);
-    color: var(--first-color);
 }
 
 .qualification__rounder {
@@ -896,8 +895,12 @@ mask {
     color: var(--first-color-alt);
 }
 
-.services__modal-alternance ul {
+.services__modal-margin ul {
     margin-top: var(--mb-1);
+}
+
+.marginBottom {
+    margin-bottom: var(--mb-1);
 }
 
 .services__modal-close {
