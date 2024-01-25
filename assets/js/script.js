@@ -43,7 +43,7 @@ navLink.forEach(n => n.addEventListener('click', linkAction));
 
 /*==================== Ecriture du métier "Développeur d'applications web et mobile, ..." ====================*/
 var typed = new Typed(".typing", {
-    strings: ["Concepteur développeur d'applications", "Ingénieur en systèmes automatisés"],
+    strings: ["Développeur Full Stack, PHP et JavaScript", "Ingénieur en systèmes automatisés"],
     typeSpeed: 100,
     backSpeed: 60,
     loop: true
